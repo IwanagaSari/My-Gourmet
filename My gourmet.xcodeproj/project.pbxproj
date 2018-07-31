@@ -14,6 +14,18 @@
 		86857C1720F5A26700720B9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86857C1520F5A26700720B9E /* LaunchScreen.storyboard */; };
 		86857C2220F5A26700720B9E /* My_gourmetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86857C2120F5A26700720B9E /* My_gourmetTests.swift */; };
 		86857C2D20F5A26700720B9E /* My_gourmetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86857C2C20F5A26700720B9E /* My_gourmetUITests.swift */; };
+		86857C4120F5A27A00720B9E /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 86857C3B20F5A27A00720B9E /* cancel.png */; };
+		86857C4220F5A27A00720B9E /* addsearchway.png in Resources */ = {isa = PBXBuildFile; fileRef = 86857C3C20F5A27A00720B9E /* addsearchway.png */; };
+		86857C4320F5A27A00720B9E /* checkedbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 86857C3D20F5A27A00720B9E /* checkedbox.png */; };
+		86857C4420F5A27A00720B9E /* uncheckedbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 86857C3E20F5A27A00720B9E /* uncheckedbox.png */; };
+		86857C4520F5A27A00720B9E /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 86857C3F20F5A27A00720B9E /* plusButton.png */; };
+		86857C4620F5A27A00720B9E /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 86857C4020F5A27A00720B9E /* back.png */; };
+		86857C4820F5EC8900720B9E /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86857C4720F5EC8900720B9E /* AllListViewController.swift */; };
+		86857C4A20F6DFD100720B9E /* shopRegistration.png in Resources */ = {isa = PBXBuildFile; fileRef = 86857C4920F6DFD000720B9E /* shopRegistration.png */; };
+		86857C4C20F705E900720B9E /* ShopRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86857C4B20F705E900720B9E /* ShopRegistrationViewController.swift */; };
+		86AEDC632101A831001A56C5 /* ShopPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AEDC622101A831001A56C5 /* ShopPageViewController.swift */; };
+		86AEDC65210585C8001A56C5 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AEDC64210585C8001A56C5 /* Shop.swift */; };
+		86AEDC692106BD1F001A56C5 /* ShopCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AEDC682106BD1F001A56C5 /* ShopCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +59,18 @@
 		86857C2820F5A26700720B9E /* My gourmetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My gourmetUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86857C2C20F5A26700720B9E /* My_gourmetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_gourmetUITests.swift; sourceTree = "<group>"; };
 		86857C2E20F5A26700720B9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86857C3B20F5A27A00720B9E /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
+		86857C3C20F5A27A00720B9E /* addsearchway.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addsearchway.png; sourceTree = "<group>"; };
+		86857C3D20F5A27A00720B9E /* checkedbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkedbox.png; sourceTree = "<group>"; };
+		86857C3E20F5A27A00720B9E /* uncheckedbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheckedbox.png; sourceTree = "<group>"; };
+		86857C3F20F5A27A00720B9E /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
+		86857C4020F5A27A00720B9E /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		86857C4720F5EC8900720B9E /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
+		86857C4920F6DFD000720B9E /* shopRegistration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopRegistration.png; sourceTree = "<group>"; };
+		86857C4B20F705E900720B9E /* ShopRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopRegistrationViewController.swift; sourceTree = "<group>"; };
+		86AEDC622101A831001A56C5 /* ShopPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopPageViewController.swift; sourceTree = "<group>"; };
+		86AEDC64210585C8001A56C5 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
+		86AEDC682106BD1F001A56C5 /* ShopCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +105,7 @@
 				86857C2020F5A26700720B9E /* My gourmetTests */,
 				86857C2B20F5A26700720B9E /* My gourmetUITests */,
 				86857C0A20F5A26300720B9E /* Products */,
+				86857C3A20F5A27A00720B9E /* originalApp1画像 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,9 +125,14 @@
 				86857C0C20F5A26300720B9E /* AppDelegate.swift */,
 				86857C0E20F5A26300720B9E /* ViewController.swift */,
 				86857C1020F5A26300720B9E /* Main.storyboard */,
+				86857C4720F5EC8900720B9E /* AllListViewController.swift */,
 				86857C1320F5A26700720B9E /* Assets.xcassets */,
 				86857C1520F5A26700720B9E /* LaunchScreen.storyboard */,
 				86857C1820F5A26700720B9E /* Info.plist */,
+				86857C4B20F705E900720B9E /* ShopRegistrationViewController.swift */,
+				86AEDC622101A831001A56C5 /* ShopPageViewController.swift */,
+				86AEDC64210585C8001A56C5 /* Shop.swift */,
+				86AEDC682106BD1F001A56C5 /* ShopCollection.swift */,
 			);
 			path = "My gourmet";
 			sourceTree = "<group>";
@@ -123,6 +153,20 @@
 				86857C2E20F5A26700720B9E /* Info.plist */,
 			);
 			path = "My gourmetUITests";
+			sourceTree = "<group>";
+		};
+		86857C3A20F5A27A00720B9E /* originalApp1画像 */ = {
+			isa = PBXGroup;
+			children = (
+				86857C4920F6DFD000720B9E /* shopRegistration.png */,
+				86857C3B20F5A27A00720B9E /* cancel.png */,
+				86857C3C20F5A27A00720B9E /* addsearchway.png */,
+				86857C3D20F5A27A00720B9E /* checkedbox.png */,
+				86857C3E20F5A27A00720B9E /* uncheckedbox.png */,
+				86857C3F20F5A27A00720B9E /* plusButton.png */,
+				86857C4020F5A27A00720B9E /* back.png */,
+			);
+			path = "originalApp1画像";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +274,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				86857C1720F5A26700720B9E /* LaunchScreen.storyboard in Resources */,
+				86857C4520F5A27A00720B9E /* plusButton.png in Resources */,
+				86857C4620F5A27A00720B9E /* back.png in Resources */,
+				86857C4420F5A27A00720B9E /* uncheckedbox.png in Resources */,
 				86857C1420F5A26700720B9E /* Assets.xcassets in Resources */,
 				86857C1220F5A26300720B9E /* Main.storyboard in Resources */,
+				86857C4120F5A27A00720B9E /* cancel.png in Resources */,
+				86857C4220F5A27A00720B9E /* addsearchway.png in Resources */,
+				86857C4A20F6DFD100720B9E /* shopRegistration.png in Resources */,
+				86857C4320F5A27A00720B9E /* checkedbox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86AEDC632101A831001A56C5 /* ShopPageViewController.swift in Sources */,
+				86857C4820F5EC8900720B9E /* AllListViewController.swift in Sources */,
+				86AEDC692106BD1F001A56C5 /* ShopCollection.swift in Sources */,
 				86857C0F20F5A26300720B9E /* ViewController.swift in Sources */,
+				86AEDC65210585C8001A56C5 /* Shop.swift in Sources */,
 				86857C0D20F5A26300720B9E /* AppDelegate.swift in Sources */,
+				86857C4C20F705E900720B9E /* ShopRegistrationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
