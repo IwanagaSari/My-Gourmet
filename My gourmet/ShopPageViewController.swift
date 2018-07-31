@@ -11,13 +11,18 @@ import UIKit
 class ShopPageViewController: UIViewController {
     
     @IBOutlet weak var shopName: UILabel!
+    @IBOutlet weak var shopArea: UILabel!
+    @IBOutlet weak var shopGenre: UILabel!
     @IBOutlet weak var ShopComment: UITextView!
     @IBOutlet weak var rate: UILabel!
-    @IBOutlet weak var shopJenre: UILabel!
+    
+    
     
     let shopRegistration = ShopRegistrationViewController()
     //let shop = Shop()
     var shopname: String?
+    var shoparea: String?
+    var shopgenre: String?
     var shopcomment: String?
     var shoprate: String?
     
@@ -25,6 +30,8 @@ class ShopPageViewController: UIViewController {
         super.viewDidLoad()
         
         shopName.text = shopname
+        shopArea.text = shoparea
+        shopGenre.text = shopgenre
         ShopComment.text = shopcomment
         rate.text = shoprate
         

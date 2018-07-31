@@ -13,12 +13,13 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var myScrollView: UIScrollView!
     @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var shopNameText: UITextField!
+    @IBOutlet weak var shopAreaText: UITextField!
+    @IBOutlet weak var shopGenreText: UITextField!
     @IBOutlet weak var shopCommentText: UITextView!
     @IBOutlet weak var shopRateText: UITextField!
     @IBOutlet weak var shopHasGone: UISegmentedControl!
     let shopCollection = ShopCollection()
     let allListViewController = AllListViewController()
-    let shop = Shop()
     //let shopPageViewController = ShopPageViewController()
     
     override func viewDidLoad() {
@@ -63,10 +64,11 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
         
         }else{
         self.performSegue(withIdentifier: "ShopPageSegue", sender: nil)
-        //let shop = Shop()
+        let shop = Shop()
         shop.name = shopNameText.text!
+        shop.area = shopAreaText.text!
+        shop.genre = shopGenreText.text!
         shop.comment = shopCommentText.text!
-        //shop.genre = 
         shop.rate = shopRateText.text!
         shop.hasgone = ShopHasGone(rawValue: shopHasGone.selectedSegmentIndex)!
         self.shopCollection.addShopCollection(shop: shop)
@@ -80,6 +82,8 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
     @objc func tapGesture(_ sender: UITapGestureRecognizer) {
         shopNameText.resignFirstResponder()
         shopCommentText.resignFirstResponder()
+        shopAreaText.resignFirstResponder()
+        shopGenreText.resignFirstResponder()
         shopRateText.resignFirstResponder()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -87,11 +91,15 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
         shopNameText.resignFirstResponder()
         shopCommentText.resignFirstResponder()
         shopRateText.resignFirstResponder()
+        shopAreaText.resignFirstResponder()
+        shopGenreText.resignFirstResponder()
         return true
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let shopPageViewController = segue.destination as!ShopPageViewController
         shopPageViewController.shopname = shopNameText.text
+        shopPageViewController.shoparea = shopAreaText.text
+        shopPageViewController.shopgenre = shopGenreText.text
         shopPageViewController.shopcomment = shopCommentText.text
         shopPageViewController.shoprate = shopRateText.text
     }
