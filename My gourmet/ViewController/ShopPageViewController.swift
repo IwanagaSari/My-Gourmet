@@ -15,16 +15,20 @@ class ShopPageViewController: UIViewController {
     @IBOutlet weak var shopGenre: UILabel!
     @IBOutlet weak var ShopComment: UITextView!
     @IBOutlet weak var rate: UILabel!
+    @IBOutlet weak var hasGoneLabel: UILabel!
     
     
     
+    let shop = Shop()
     let shopRegistration = ShopRegistrationViewController()
-    //let shop = Shop()
+    let shopCollection = ShopCollection()
+    
     var shopname: String?
     var shoparea: String?
     var shopgenre: String?
     var shopcomment: String?
     var shoprate: String?
+    var shophasgone: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,32 +39,42 @@ class ShopPageViewController: UIViewController {
         ShopComment.text = shopcomment
         rate.text = shoprate
         
+        switch shophasgone {
+            case 0:
+                hasGoneLabel.text = "行ったことあり！"
+            case 1:
+                 hasGoneLabel.text = "行ったことない"
+            default: break
+        }
         
+        ShopComment.layer.cornerRadius = 5
+        ShopComment.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1).cgColor
+        ShopComment.layer.borderWidth = 1
         
-
+        self.shopCollection.fetchShops()
+                
         // Do any additional setup after loading the view.
-        //shopName.text = shopRegistration.shopNameText.text!
-        //ShopComment.text = shopRegistration.shopCommentText.text!
-        //rate.text = shopRegistration.shopRateText.text!
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "閉じる", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShopPageViewController.close(sender:)))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "編集へ戻る", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShopPageViewController.edit(sender:)))
     }
     
-    //func pageview(shop: Shop){
-      //  shopName.text = shop.name
-     //  print("sari")
-    //}
     
-    @objc func close(sender: UIBarButtonItem) {
-        //self.performSegue(withIdentifier: "shopRegistrationSegue", sender: nil)
-        //self.dismiss(animated: true, completion: nil)
-        navigationController?.popToRootViewController(animated: true)
-    }
+    //@objc func close(sender: UIBarButtonItem) {
+    
+        //navigationController?.popToRootViewController(animated: true)
+        //shop.name = shopName.text!
+        //shop.area = shopArea.text!
+        //shop.genre = shopGenre.text!
+        //shop.comment = ShopComment.text!
+        //shop.rate = rate.text!
+        //shop.hasgone = ShopHasGone(rawValue: shopHasGone.selectedSegmentIndex)!
+        //self.shopCollection.addShopCollection(shop: shop)
+        //print(self.shopCollection.shops)
+    //}
     
     @objc func edit(sender: UIBarButtonItem) {
         //self.performSegue(withIdentifier: "shopRegistrationSegue", sender: nil)
@@ -74,6 +88,27 @@ class ShopPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func finalRegistration(_ sender: UIButton) {
+        navigationController?.popToRootViewController(animated: true)
+        shop.name = shopName.text!
+        shop.area = shopArea.text!
+        shop.genre = shopGenre.text!
+        shop.comment = ShopComment.text!
+        shop.rate = rate.text!
+        
+        switch shophasgone{
+            case 0:
+                shop.hasgone = .hasgone
+            case 1:
+                shop.hasgone = .hasnotgone
+            default: break
+        }
+        //segumentは前のページで選択するので使えなかった↓
+        //shop.hasgone = ShopHasGone(rawValue: shopHasGone.selectedSegmentIndex)!
+        
+        self.shopCollection.addShopCollection(shop: shop)
+        print(self.shopCollection.shops)
+    }
     
     
     

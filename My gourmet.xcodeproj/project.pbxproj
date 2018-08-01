@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8672425221114C1B00B92CA5 /* ShopPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8672425121114C1B00B92CA5 /* ShopPage2ViewController.swift */; };
 		86857C0D20F5A26300720B9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86857C0C20F5A26300720B9E /* AppDelegate.swift */; };
 		86857C0F20F5A26300720B9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86857C0E20F5A26300720B9E /* ViewController.swift */; };
 		86857C1220F5A26300720B9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86857C1020F5A26300720B9E /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8672425121114C1B00B92CA5 /* ShopPage2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopPage2ViewController.swift; sourceTree = "<group>"; };
 		86857C0920F5A26300720B9E /* My gourmet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My gourmet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86857C0C20F5A26300720B9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86857C0E20F5A26300720B9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8672425321114C4900B92CA5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				86857C0E20F5A26300720B9E /* ViewController.swift */,
+				86857C4720F5EC8900720B9E /* AllListViewController.swift */,
+				86857C4B20F705E900720B9E /* ShopRegistrationViewController.swift */,
+				86AEDC622101A831001A56C5 /* ShopPageViewController.swift */,
+				8672425121114C1B00B92CA5 /* ShopPage2ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		86857C0020F5A26200720B9E = {
 			isa = PBXGroup;
 			children = (
@@ -123,14 +137,11 @@
 			isa = PBXGroup;
 			children = (
 				86857C0C20F5A26300720B9E /* AppDelegate.swift */,
-				86857C0E20F5A26300720B9E /* ViewController.swift */,
 				86857C1020F5A26300720B9E /* Main.storyboard */,
-				86857C4720F5EC8900720B9E /* AllListViewController.swift */,
 				86857C1320F5A26700720B9E /* Assets.xcassets */,
+				8672425321114C4900B92CA5 /* ViewController */,
 				86857C1520F5A26700720B9E /* LaunchScreen.storyboard */,
 				86857C1820F5A26700720B9E /* Info.plist */,
-				86857C4B20F705E900720B9E /* ShopRegistrationViewController.swift */,
-				86AEDC622101A831001A56C5 /* ShopPageViewController.swift */,
 				86AEDC64210585C8001A56C5 /* Shop.swift */,
 				86AEDC682106BD1F001A56C5 /* ShopCollection.swift */,
 			);
@@ -307,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8672425221114C1B00B92CA5 /* ShopPage2ViewController.swift in Sources */,
 				86AEDC632101A831001A56C5 /* ShopPageViewController.swift in Sources */,
 				86857C4820F5EC8900720B9E /* AllListViewController.swift in Sources */,
 				86AEDC692106BD1F001A56C5 /* ShopCollection.swift in Sources */,

@@ -18,6 +18,7 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var shopCommentText: UITextView!
     @IBOutlet weak var shopRateText: UITextField!
     @IBOutlet weak var shopHasGone: UISegmentedControl!
+    
     let shopCollection = ShopCollection()
     let allListViewController = AllListViewController()
     //let shopPageViewController = ShopPageViewController()
@@ -38,8 +39,12 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
         shopNameText.delegate = self
         shopRateText.delegate = self
         
+        shopCommentText.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1).cgColor
+        shopCommentText.layer.borderWidth = 1
+        shopCommentText.layer.cornerRadius = 5
+        
         //allListViewController.allListTableView.reloadData()
-        self.shopCollection.fetchShops()
+        //self.shopCollection.fetchShops()
         
 
 
@@ -64,17 +69,15 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
         
         }else{
         self.performSegue(withIdentifier: "ShopPageSegue", sender: nil)
-        let shop = Shop()
-        shop.name = shopNameText.text!
-        shop.area = shopAreaText.text!
-        shop.genre = shopGenreText.text!
-        shop.comment = shopCommentText.text!
-        shop.rate = shopRateText.text!
-        shop.hasgone = ShopHasGone(rawValue: shopHasGone.selectedSegmentIndex)!
-        self.shopCollection.addShopCollection(shop: shop)
-        print(self.shopCollection.shops)
-        //self.shopPageViewController.pageview(shop: shop)
-            
+        //let shop = Shop()
+        //shop.name = shopNameText.text!
+        //shop.area = shopAreaText.text!
+        //shop.genre = shopGenreText.text!
+        //shop.comment = shopCommentText.text!
+        //shop.rate = shopRateText.text!
+        //shop.hasgone = ShopHasGone(rawValue: shopHasGone.selectedSegmentIndex)!
+        //self.shopCollection.addShopCollection(shop: shop)
+        //print(self.shopCollection.shops)
         
         }
     }
@@ -102,6 +105,7 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
         shopPageViewController.shopgenre = shopGenreText.text
         shopPageViewController.shopcomment = shopCommentText.text
         shopPageViewController.shoprate = shopRateText.text
+        shopPageViewController.shophasgone =  shopHasGone.selectedSegmentIndex
     }
     
     
