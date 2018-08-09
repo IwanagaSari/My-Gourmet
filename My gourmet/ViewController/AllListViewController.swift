@@ -12,6 +12,15 @@ class AllListViewController: UIViewController,UITableViewDelegate, UITableViewDa
     @IBOutlet weak var allListTableView: UITableView!
     //let shopCollection = ShopCollection.sharedInstance
     let shopCollection = ShopCollection()
+    
+    var selectedname: String?
+    var selectedarea: String?
+    var selectedgenre: String?
+    var selectedcomment: String?
+    var selectedrate: String?
+    var selectedhasgone: ShopHasGone?
+    var selectedindexpath: Int?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +68,35 @@ class AllListViewController: UIViewController,UITableViewDelegate, UITableViewDa
        
         return cell
     }
+    
+    /// セル選択時（UITableViewDataSource optional）
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let shop = self.shopCollection.shops[indexPath.row]
+        selectedname = shop.name
+        selectedarea = shop.area
+        selectedgenre = shop.genre
+        selectedcomment = shop.comment
+        selectedrate = shop.rate
+        selectedhasgone = shop.hasgone
+        selectedindexpath = indexPath.row
+        
+        performSegue(withIdentifier: "toShopPage2Segue", sender: IndexPath.self)
+        //self.shopCollection.shops[indexPath.row]
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let shopPage2ViewController = segue.destination as!ShopPage2ViewController
+        shopPage2ViewController.shopname2 = selectedname
+        shopPage2ViewController.shoparea2 = selectedarea
+        shopPage2ViewController.shopgenre2 = selectedgenre
+        shopPage2ViewController.shopcomment2 = selectedcomment
+        shopPage2ViewController.shoprate2 = selectedrate        
+        shopPage2ViewController.shophasgone2 =  selectedhasgone
+        shopPage2ViewController.indexpath2 = selectedindexpath
+        
+    }
+    
+    
     //削除機能の実装
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {

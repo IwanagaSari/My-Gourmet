@@ -29,6 +29,7 @@ class ShopPageViewController: UIViewController {
     var shopcomment: String?
     var shoprate: String?
     var shophasgone: Int?
+    var indexpath: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,7 @@ class ShopPageViewController: UIViewController {
         ShopComment.layer.borderWidth = 1
         
         self.shopCollection.fetchShops()
-                
+        
         // Do any additional setup after loading the view.
     }
     
@@ -106,8 +107,12 @@ class ShopPageViewController: UIViewController {
         //segumentは前のページで選択するので使えなかった↓
         //shop.hasgone = ShopHasGone(rawValue: shopHasGone.selectedSegmentIndex)!
         
-        self.shopCollection.addShopCollection(shop: shop)
-        print(self.shopCollection.shops)
+        if let IndexPath = indexpath {
+            self.shopCollection.changeShopCollection(shop: shop,num: IndexPath)
+        }else{
+            self.shopCollection.addShopCollection(shop: shop)
+            print(self.shopCollection.shops)
+        }
     }
     
     

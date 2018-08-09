@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
+class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {//},UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
 
     @IBOutlet weak var myScrollView: UIScrollView!
     @IBOutlet weak var imageScrollView: UIScrollView!
@@ -18,10 +20,19 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var shopCommentText: UITextView!
     @IBOutlet weak var shopRateText: UITextField!
     @IBOutlet weak var shopHasGone: UISegmentedControl!
+    @IBOutlet weak var shopAreaPicker: UIPickerView!
     
     let shopCollection = ShopCollection()
     let allListViewController = AllListViewController()
-    //let shopPageViewController = ShopPageViewController()
+    let shop = Shop()
+    
+    var shopname: String?
+    var shoparea: String?
+    var shopgenre: String?
+    var shopcomment: String?
+    var shoprate: String?
+    var shophasgone: ShopHasGone?
+    var indexPath: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,18 +49,30 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
         
         shopNameText.delegate = self
         shopRateText.delegate = self
+        //shopAreaPicker.delegate = self
+        //shopAreaPicker.dataSource = self
         
         shopCommentText.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1).cgColor
         shopCommentText.layer.borderWidth = 1
         shopCommentText.layer.cornerRadius = 5
         
-        //allListViewController.allListTableView.reloadData()
-        //self.shopCollection.fetchShops()
+        //ShopPage2から「編集に戻る」を押した時は、内容を反映させておく
+        shopNameText.text = shopname
+        shopAreaText.text = shoparea
+        shopGenreText.text = shopgenre
+        shopCommentText.text = shopcomment
+        shopRateText.text = shoprate
         
-
-
+        switch shophasgone {
+        case .hasgone? :
+            shopHasGone.selectedSegmentIndex = 0
+        case .hasnotgone? :
+            shopHasGone.selectedSegmentIndex = 1
+        default: break
+        }
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "New Gourmet"
@@ -59,6 +82,13 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //pickerviewを実装してみる
+    //func numberOfComponents(in pickerView: UIPickerView) -> Int {
+     //   return 1
+    //}
+   // func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    //    return shop.area.count
+    //}
     
     @IBAction func registration(_ sender: UIButton) {
         if shopNameText.text!.isEmpty {
@@ -69,16 +99,6 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
         
         }else{
         self.performSegue(withIdentifier: "ShopPageSegue", sender: nil)
-        //let shop = Shop()
-        //shop.name = shopNameText.text!
-        //shop.area = shopAreaText.text!
-        //shop.genre = shopGenreText.text!
-        //shop.comment = shopCommentText.text!
-        //shop.rate = shopRateText.text!
-        //shop.hasgone = ShopHasGone(rawValue: shopHasGone.selectedSegmentIndex)!
-        //self.shopCollection.addShopCollection(shop: shop)
-        //print(self.shopCollection.shops)
-        
         }
     }
     
@@ -89,6 +109,7 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
         shopGenreText.resignFirstResponder()
         shopRateText.resignFirstResponder()
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //実行したい処理
         shopNameText.resignFirstResponder()
@@ -106,6 +127,7 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {
         shopPageViewController.shopcomment = shopCommentText.text
         shopPageViewController.shoprate = shopRateText.text
         shopPageViewController.shophasgone =  shopHasGone.selectedSegmentIndex
+        shopPageViewController.indexpath = indexPath
     }
     
     
