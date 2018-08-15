@@ -8,23 +8,24 @@
 
 import UIKit
 
-class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {//},UIPickerViewDelegate, UIPickerViewDataSource {
+class ShopRegistrationViewController: UIViewController, UITextFieldDelegate,UIPickerViewDelegate, UIPickerViewDataSource {
     
     
 
     @IBOutlet weak var myScrollView: UIScrollView!
     @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var shopNameText: UITextField!
-    @IBOutlet weak var shopAreaText: UITextField!
-    @IBOutlet weak var shopGenreText: UITextField!
     @IBOutlet weak var shopCommentText: UITextView!
     @IBOutlet weak var shopRateText: UITextField!
     @IBOutlet weak var shopHasGone: UISegmentedControl!
     @IBOutlet weak var shopAreaPicker: UIPickerView!
+    @IBOutlet weak var shopGenrePicker: UIPickerView!
     
     let shopCollection = ShopCollection()
     let allListViewController = AllListViewController()
     let shop = Shop()
+    let areaCollection = AreaCollection()
+    let genreCollection =  GenreCollection()
     
     var shopname: String?
     var shoparea: String?
@@ -33,6 +34,9 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {//}
     var shoprate: String?
     var shophasgone: ShopHasGone?
     var indexPath: Int?
+    
+    var areanum: Int?
+    var genrenum: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,20 +53,30 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {//}
         
         shopNameText.delegate = self
         shopRateText.delegate = self
-        //shopAreaPicker.delegate = self
-        //shopAreaPicker.dataSource = self
+        shopAreaPicker.delegate = self
+        shopAreaPicker.dataSource = self
+        shopGenrePicker.delegate = self
+        shopGenrePicker.dataSource = self
         
         shopCommentText.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1).cgColor
         shopCommentText.layer.borderWidth = 1
         shopCommentText.layer.cornerRadius = 5
         
+        
         //ShopPage2から「編集に戻る」を押した時は、内容を反映させておく
         shopNameText.text = shopname
-        shopAreaText.text = shoparea
-        shopGenreText.text = shopgenre
         shopCommentText.text = shopcomment
         shopRateText.text = shoprate
-        
+        //エリアとジャンルのpickerviewにも内容を反映させておく
+        self.areaCollection.fetchAreas()
+        if let areaNum = areanum{
+            shopAreaPicker.selectRow(areaNum, inComponent: 0, animated: true)
+        }
+        self.genreCollection.fetchAreas()
+        if let genreNum = genrenum{
+            shopGenrePicker.selectRow(genreNum, inComponent: 0, animated: true)
+        }
+    
         switch shophasgone {
         case .hasgone? :
             shopHasGone.selectedSegmentIndex = 0
@@ -70,6 +84,13 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {//}
             shopHasGone.selectedSegmentIndex = 1
         default: break
         }
+        
+        
+        //2つのpickerにはあらかじめ初期値を取得しておく。
+        shoparea = areaCollection.areas[0]
+        //areanum = 0
+        shopgenre = genreCollection.genres[0]
+        
         // Do any additional setup after loading the view.
     }
     
@@ -82,13 +103,48 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {//}
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    //pickerviewを実装してみる
-    //func numberOfComponents(in pickerView: UIPickerView) -> Int {
-     //   return 1
-    //}
-   // func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    //    return shop.area.count
-    //}
+    //ーーーーーーーーーーpickerviewを実装ーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    //列数
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    //行数
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == shopAreaPicker {
+            return areaCollection.areas.count
+        }else  {
+            return genreCollection.genres.count
+        }
+    }
+    //内容
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        //shopAreaPicker.selectRow(areanum!, inComponent: 0, animated: true)
+    
+        
+        if  pickerView == shopAreaPicker {
+            return areaCollection.areas[row]
+            
+        }else {
+           return genreCollection.genres[row]
+        }
+    }
+        
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if  pickerView == shopAreaPicker {
+            shoparea = areaCollection.areas[row]
+            //areanum = row
+            //print(areanum!)
+            
+            //areanum = areaCollection.areas.index(of: shoparea! )
+            //print(areanum!)
+        
+        } else {
+            shopgenre = genreCollection.genres[row]
+        }
+        
+        
+    }
     
     @IBAction func registration(_ sender: UIButton) {
         if shopNameText.text!.isEmpty {
@@ -100,13 +156,14 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {//}
         }else{
         self.performSegue(withIdentifier: "ShopPageSegue", sender: nil)
         }
+        
     }
     
     @objc func tapGesture(_ sender: UITapGestureRecognizer) {
         shopNameText.resignFirstResponder()
         shopCommentText.resignFirstResponder()
-        shopAreaText.resignFirstResponder()
-        shopGenreText.resignFirstResponder()
+        shopAreaPicker.resignFirstResponder()
+        shopGenrePicker.resignFirstResponder()
         shopRateText.resignFirstResponder()
     }
     
@@ -115,15 +172,16 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate {//}
         shopNameText.resignFirstResponder()
         shopCommentText.resignFirstResponder()
         shopRateText.resignFirstResponder()
-        shopAreaText.resignFirstResponder()
-        shopGenreText.resignFirstResponder()
+        shopAreaPicker.resignFirstResponder()
+        shopGenrePicker.resignFirstResponder()
         return true
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let shopPageViewController = segue.destination as!ShopPageViewController
         shopPageViewController.shopname = shopNameText.text
-        shopPageViewController.shoparea = shopAreaText.text
-        shopPageViewController.shopgenre = shopGenreText.text
+        shopPageViewController.shoparea = shoparea
+        shopPageViewController.shopareanum = areanum
+        shopPageViewController.shopgenre = shopgenre
         shopPageViewController.shopcomment = shopCommentText.text
         shopPageViewController.shoprate = shopRateText.text
         shopPageViewController.shophasgone =  shopHasGone.selectedSegmentIndex

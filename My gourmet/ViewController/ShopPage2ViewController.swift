@@ -17,6 +17,9 @@ class ShopPage2ViewController: UIViewController {
     @IBOutlet weak var rate2: UILabel!
     @IBOutlet weak var hasGoneLabel2: UILabel!
     
+    let areaCollection = AreaCollection()
+    let genreCollection = GenreCollection()
+    
     var shopname2: String?
     var shoparea2: String?
     var shopgenre2: String?
@@ -24,6 +27,8 @@ class ShopPage2ViewController: UIViewController {
     var shoprate2: String?
     var shophasgone2: ShopHasGone?
     var indexpath2: Int?
+    var shopareanum2: Int?
+    var shopgenrenum2: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +50,11 @@ class ShopPage2ViewController: UIViewController {
         shopComment2.layer.cornerRadius = 5
         shopComment2.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1).cgColor
         shopComment2.layer.borderWidth = 1
+        
+        self.areaCollection.fetchAreas()
+        shopareanum2 = areaCollection.areas.index(of: shoparea2! )
+        shopgenrenum2 = genreCollection.genres.index(of: shopgenre2! )
+        print(shopareanum2!)
         // Do any additional setup after loading the view.
     }
     
@@ -72,6 +82,8 @@ class ShopPage2ViewController: UIViewController {
             shopRegistrationViewController.shoprate = rate2.text
             shopRegistrationViewController.shophasgone = shophasgone2
             shopRegistrationViewController.indexPath = indexpath2
+            shopRegistrationViewController.areanum = shopareanum2
+            shopRegistrationViewController.genrenum = shopgenrenum2
             
         }
     }

@@ -20,6 +20,7 @@ class ShopPageViewController: UIViewController {
     
     
     let shop = Shop()
+    let area = AreaCollection()
     let shopRegistration = ShopRegistrationViewController()
     let shopCollection = ShopCollection()
     
@@ -31,8 +32,11 @@ class ShopPageViewController: UIViewController {
     var shophasgone: Int?
     var indexpath: Int?
     
+    var shopareanum : Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //print(shopareanum!)
         
         shopName.text = shopname
         shopArea.text = shoparea
@@ -93,6 +97,9 @@ class ShopPageViewController: UIViewController {
         navigationController?.popToRootViewController(animated: true)
         shop.name = shopName.text!
         shop.area = shopArea.text!
+        //shopareanumを保存
+        //area.num = shopareanum
+        
         shop.genre = shopGenre.text!
         shop.comment = ShopComment.text!
         shop.rate = rate.text!

@@ -12,6 +12,7 @@ class AllListViewController: UIViewController,UITableViewDelegate, UITableViewDa
     @IBOutlet weak var allListTableView: UITableView!
     //let shopCollection = ShopCollection.sharedInstance
     let shopCollection = ShopCollection()
+    let areaCollection = AreaCollection()
     
     var selectedname: String?
     var selectedarea: String?
@@ -21,9 +22,12 @@ class AllListViewController: UIViewController,UITableViewDelegate, UITableViewDa
     var selectedhasgone: ShopHasGone?
     var selectedindexpath: Int?
     
+    var selectedareanum: Int?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         allListTableView.delegate = self
         allListTableView.dataSource = self
@@ -79,6 +83,8 @@ class AllListViewController: UIViewController,UITableViewDelegate, UITableViewDa
         selectedrate = shop.rate
         selectedhasgone = shop.hasgone
         selectedindexpath = indexPath.row
+        //selectedareanum = areaCollection.areas.indexOf(selectedarea)
+        
         
         performSegue(withIdentifier: "toShopPage2Segue", sender: IndexPath.self)
         //self.shopCollection.shops[indexPath.row]
@@ -93,6 +99,8 @@ class AllListViewController: UIViewController,UITableViewDelegate, UITableViewDa
         shopPage2ViewController.shoprate2 = selectedrate        
         shopPage2ViewController.shophasgone2 =  selectedhasgone
         shopPage2ViewController.indexpath2 = selectedindexpath
+        //shopPage2ViewController.shopareanum2 = selectedareanum
+        
         
     }
     

@@ -12,13 +12,15 @@ enum ShopHasGone: Int {
     case hasgone  = 0
     case hasnotgone = 1
 }
-//var areas: NSArray = []
+var areas: NSArray = ["中洲", "天神", "春吉"]
 
 
 class Shop: NSObject {
     var name = ""
-    var area = "" //areas // NSArray = []
+    var area = ""
+   // var areanum = 0
     var genre = ""
+   // var genrenum = 0
     var comment = ""
     var rate = ""
     var hasgone:ShopHasGone = .hasgone

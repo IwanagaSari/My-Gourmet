@@ -39,6 +39,7 @@ class ShopCollection: NSObject {
     //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     
     
+    
     //ーーーーー登録時など、新たにデータを保存するときに呼び出されるーーーーーーーーーーーーーーーーーー
     func addShopCollection(shop: Shop){
         self.shops.append(shop)

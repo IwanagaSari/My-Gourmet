@@ -24,7 +24,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var addDetail :UITextField!
     
     let allListViewController = AllListViewController()
-    let sectionTitle = ["ジャンル", "エリア", "行った・行ってない"]
+    let areaCollection = AreaCollection()
+    let genreCollection = GenreCollection()
+    let sectionTitle = ["エリア", "ジャンル", "行った・行ってない"]
+    let section2 = ["行った","行ってない"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture(_:)))
         self.view.addGestureRecognizer(tapRecognizer)
+        
+        self.areaCollection.fetchAreas()
+        self.genreCollection.fetchAreas()
        
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -58,9 +64,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //ーーーーーーーーーーーーーーーセルの設定ーーーーーーーーーーーーーーーーー
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.searchCollection.lists.count
-        return 10
+        
+        switch section {
+            case 0 :
+            return self.areaCollection.areas.count
+            case 1 :
+            return self.genreCollection.genres.count
+            case 2 :
+            return self.section2.count
+        default:
+            return 0
+        }
     }
+    
     //セルの高さ
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(20)
@@ -71,6 +87,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //let search = self.searchCollection.lists[indexPath.row]
         //cell.textLabel?.text = search.title
         //cell.textLabel?.font = UIFont(name: "HirakakuProN-W6", size: 15)
+        switch indexPath.section {
+        case 0 :
+             cell.textLabel?.text = areaCollection.areas[indexPath.row]
+        case 1 :
+             cell.textLabel?.text = genreCollection.genres[indexPath.row]
+        case 2 :
+             cell.textLabel?.text = section2[indexPath.row]
+        default : break
+        }
+        
         return cell
     }
     //ーーーーーーーーーーーーーセクションーーーーーーーーーーーーーーー
@@ -81,8 +107,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     //セクションのタイトル
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //return reseachMethod[section]
-        //return "ジャンル"
         return sectionTitle[section]
     }
     //セクションのタイトルの高さ
@@ -256,6 +280,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let detail2 = searchWayDetail2.text!
         let detail3 = searchWayDetail3.text!
         print("検索方法:\(way)、条件詳細1:\(detail1)、条件詳細2:\(detail2)、条件詳細3:\(detail3)")
+        
+        self.areaCollection.addAreaCollection(area: detail1)
+        
+        print(areaCollection.areas)
         backView.removeFromSuperview()
     }
     //ーーーーーーーーーーー詳細追加ボタンを押した後の画面ーーーーーーーーーーーーーーーーーー
