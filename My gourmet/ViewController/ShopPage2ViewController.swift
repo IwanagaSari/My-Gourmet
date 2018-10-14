@@ -34,7 +34,7 @@ class ShopPage2ViewController: UIViewController {
         super.viewDidLoad()
         
         shopName2.text = shopname2
-        shopArea2.text = shoparea2
+        
         shopGenre2.text = shopgenre2
         shopComment2.text = shopcomment2
         rate2.text = shoprate2
@@ -52,9 +52,24 @@ class ShopPage2ViewController: UIViewController {
         shopComment2.layer.borderWidth = 1
         
         self.areaCollection.fetchAreas()
-        shopareanum2 = areaCollection.areas.index(of: shoparea2! )
-        shopgenrenum2 = genreCollection.genres.index(of: shopgenre2! )
-        print(shopareanum2!)
+        self.genreCollection.fetchAreas()
+        //エリアの表示
+        if areaCollection.areas.contains(shoparea2!){
+            shopArea2.text = shoparea2
+            shopareanum2 = areaCollection.areas.index(of: shoparea2! )
+        }else {
+            shopArea2.text = ""
+        }
+        
+        //ジャンルの表示
+        
+        if genreCollection.genres.contains(shopgenre2!){
+            shopGenre2.text = shopgenre2
+            shopgenrenum2 = genreCollection.genres.index(of: shopgenre2! )
+        }else{
+            shopGenre2.text = ""
+        }
+
         // Do any additional setup after loading the view.
     }
     
@@ -86,6 +101,7 @@ class ShopPage2ViewController: UIViewController {
             shopRegistrationViewController.genrenum = shopgenrenum2
             
         }
+            //searchResultViewController.
     }
     
 

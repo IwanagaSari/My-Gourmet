@@ -62,6 +62,9 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate,UIPi
         shopCommentText.layer.borderWidth = 1
         shopCommentText.layer.cornerRadius = 5
         
+        //2つのpickerにはあらかじめ初期値を取得しておく。
+        
+        
         
         //ShopPage2から「編集に戻る」を押した時は、内容を反映させておく
         shopNameText.text = shopname
@@ -69,12 +72,22 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate,UIPi
         shopRateText.text = shoprate
         //エリアとジャンルのpickerviewにも内容を反映させておく
         self.areaCollection.fetchAreas()
+        //（基本的には、1番目の内容を反映させておく）
+        shoparea = areaCollection.areas[0]
+        
         if let areaNum = areanum{
             shopAreaPicker.selectRow(areaNum, inComponent: 0, animated: true)
+            shoparea = areaCollection.areas[areaNum]
         }
+        
+        
+        
         self.genreCollection.fetchAreas()
+        shopgenre = genreCollection.genres[0]
+        
         if let genreNum = genrenum{
             shopGenrePicker.selectRow(genreNum, inComponent: 0, animated: true)
+            shopgenre = genreCollection.genres[genreNum]
         }
     
         switch shophasgone {
@@ -86,10 +99,7 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate,UIPi
         }
         
         
-        //2つのpickerにはあらかじめ初期値を取得しておく。
-        shoparea = areaCollection.areas[0]
-        //areanum = 0
-        shopgenre = genreCollection.genres[0]
+       
         
         // Do any additional setup after loading the view.
     }
@@ -98,6 +108,7 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate,UIPi
         super.viewWillAppear(animated)
         self.title = "New Gourmet"
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -111,6 +122,7 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate,UIPi
     //行数
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == shopAreaPicker {
+            
             return areaCollection.areas.count
         }else  {
             return genreCollection.genres.count
@@ -133,12 +145,6 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate,UIPi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if  pickerView == shopAreaPicker {
             shoparea = areaCollection.areas[row]
-            //areanum = row
-            //print(areanum!)
-            
-            //areanum = areaCollection.areas.index(of: shoparea! )
-            //print(areanum!)
-        
         } else {
             shopgenre = genreCollection.genres[row]
         }

@@ -58,6 +58,10 @@ class ShopPageViewController: UIViewController {
         
         self.shopCollection.fetchShops()
         
+        let myURL = URL(string: "http://google.com")
+        let myURLRequest = URLRequest(url: myURL!)
+
+        
         // Do any additional setup after loading the view.
     }
     
@@ -94,7 +98,7 @@ class ShopPageViewController: UIViewController {
     }
     
     @IBAction func finalRegistration(_ sender: UIButton) {
-        navigationController?.popToRootViewController(animated: true)
+        //navigationController?.popToRootViewController(animated: true)
         shop.name = shopName.text!
         shop.area = shopArea.text!
         //shopareanumを保存
@@ -120,6 +124,8 @@ class ShopPageViewController: UIViewController {
             self.shopCollection.addShopCollection(shop: shop)
             print(self.shopCollection.shops)
         }
+        performSegue(withIdentifier: "toTopPageSegue", sender: IndexPath.self)
+        //navigationController?.popToRootViewController(animated: true)
     }
     
     

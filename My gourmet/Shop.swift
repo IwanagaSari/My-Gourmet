@@ -12,7 +12,7 @@ enum ShopHasGone: Int {
     case hasgone  = 0
     case hasnotgone = 1
 }
-var areas: NSArray = ["中洲", "天神", "春吉"]
+var areas: NSArray = ["中洲", "天神", "春吉","西中洲"]
 
 
 class Shop: NSObject {

@@ -10,7 +10,7 @@ import UIKit
 
 class GenreCollection: NSObject {
     static let sharedInstance = GenreCollection()
-    var genres:[String] = ["焼き鳥","焼肉","寿司"]
+    var genres:[String] = []
     
     //ーーーーーーーーーまず各画面のviewDidLoadで読み込まれ、保存したデータを呼び出すーーーーーーーーーーーーーーーーーーー
     func fetchAreas() {

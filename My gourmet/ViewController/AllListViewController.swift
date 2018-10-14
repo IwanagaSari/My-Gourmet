@@ -33,20 +33,19 @@ class AllListViewController: UIViewController,UITableViewDelegate, UITableViewDa
         allListTableView.dataSource = self
         
         self.allListTableView.reloadData()
+        
+        
         self.shopCollection.fetchShops()
         
-        
-        //print(self.shopCollection.shops)
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "All List"
         //self.allListTableView.reloadData()
         self.navigationItem.rightBarButtonItem = editButtonItem
         //self.navigationItem.leftBarButtonItem = editButtonItem
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +57,7 @@ class AllListViewController: UIViewController,UITableViewDelegate, UITableViewDa
         return self.shopCollection.shops.count
         //return 7
     }
+    
     //セルの高さ
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(50)
