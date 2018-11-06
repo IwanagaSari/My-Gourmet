@@ -184,6 +184,13 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate,UIPi
         shopGenrePicker.resignFirstResponder()
         return true
     }
+    @IBAction func addGenreBtn(_ sender: UIButton) {
+        let addGenreViewController = AddGenreViewController()
+        let backView = addGenreViewController.makeBackView()
+        self.view.addSubview(backView)
+        backView.addSubview(addGenreViewController.showCreateGenreView())
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let shopPageViewController = segue.destination as!ShopPageViewController
         shopPageViewController.shopname = shopNameText.text
@@ -195,16 +202,5 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate,UIPi
         shopPageViewController.shophasgone =  shopHasGone.selectedSegmentIndex
         shopPageViewController.indexpath = indexPath
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
