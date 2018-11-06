@@ -80,11 +80,14 @@ class ShopPage2ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @objc func shopEditViewController(sender:UIBarButtonItem) {
         self.performSegue(withIdentifier: "shopEditSegue", sender: nil)
+    }
+    
+    @IBAction func openSafari(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toSafariSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,8 +103,10 @@ class ShopPage2ViewController: UIViewController {
             shopRegistrationViewController.areanum = shopareanum2
             shopRegistrationViewController.genrenum = shopgenrenum2
             
+        }else if segue.identifier == "toSafariSegue" {
+            let openSafari = segue.destination as! OpenSafari
+            openSafari.searchName = shopname2 ?? ""
         }
-            //searchResultViewController.
     }
     
 

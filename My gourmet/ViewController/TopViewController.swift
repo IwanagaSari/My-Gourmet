@@ -2,14 +2,14 @@
 //  ViewController.swift
 //  My gourmet
 //
-//  Created by 岩永彩里 on 2018/07/11.
-//  Copyright © 2018年 iwanaga sari. All rights reserved.
+//  Created by 岩永彩里 on 2018/11/06.
+//  Copyright © 2018 iwanaga sari. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
-  
+class TopViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
+    
     @IBOutlet weak var searchWayTableView: UITableView!
     
     //let shopCollection = ShopCollection()
@@ -34,7 +34,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     var shoplist:[Shop] = []
     var shoplist2:[Shop] = []
-
     
     let allListViewController = AllListViewController()
     let shopCollection = ShopCollection()
@@ -42,20 +41,20 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     let genreCollection = GenreCollection()
     let sectionTitle = ["エリア", "ジャンル", "行った・行ってない"]
     let section2 = ["行った","行ってない"]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         searchWayTableView.delegate = self
         searchWayTableView.dataSource  = self
-      
+        
         
         // trueで複数選択、falseで単一選択
         searchWayTableView.allowsMultipleSelection = true
         
         
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture(_:)))
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(TopViewController.tapGesture(_:)))
         tapRecognizer.cancelsTouchesInView = false
-       
+        
         
         self.areaCollection.fetchAreas()
         self.genreCollection.fetchAreas()
@@ -71,12 +70,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "お店登録", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ViewController.shopRegistrationViewController(sender:)))
-         self.navigationController!.navigationBar.tintColor = UIColor.white
-         //allListViewController.allListTableView.reloadData()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "お店登録", style: UIBarButtonItemStyle.plain, target: self, action: #selector(TopViewController.shopRegistrationViewController(sender:)))
+        self.navigationController!.navigationBar.tintColor = UIColor.white
+        //allListViewController.allListTableView.reloadData()
         
         //ハイライト解除
         searchWayTableView.reloadData()
@@ -95,22 +93,15 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         print(shoplist2)
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     //ーーーーーーーーーーーーーーーセルの設定ーーーーーーーーーーーーーーーーー
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
-            case 0 :
+        case 0 :
             return self.areaCollection.areas.count
-            case 1 :
+        case 1 :
             return self.genreCollection.genres.count
-            case 2 :
+        case 2 :
             return self.section2.count
         default:
             return 0
@@ -131,11 +122,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //cell.textLabel?.font = UIFont(name: "HirakakuProN-W6", size: 15)
         switch indexPath.section {
         case 0 :
-             cell.textLabel?.text = areaCollection.areas[indexPath.row]
+            cell.textLabel?.text = areaCollection.areas[indexPath.row]
         case 1 :
-             cell.textLabel?.text = genreCollection.genres[indexPath.row]
+            cell.textLabel?.text = genreCollection.genres[indexPath.row]
         case 2 :
-             cell.textLabel?.text = section2[indexPath.row]
+            cell.textLabel?.text = section2[indexPath.row]
         default : break
         }
         
@@ -144,34 +135,28 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //セルの削除機能
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
-           
+            
             switch indexPath.section {
             case 0 :
-            self.areaCollection.areas.remove(at: indexPath.row)
-            self.areaCollection.save()
-    
+                self.areaCollection.areas.remove(at: indexPath.row)
+                self.areaCollection.save()
+                
             case 1 :
-            self.genreCollection.genres.remove(at: indexPath.row)
-            self.genreCollection.save()
-
+                self.genreCollection.genres.remove(at: indexPath.row)
+                self.genreCollection.save()
+                
             default : break
-                }
+            }
             
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         if indexPath.section == 2{
             deleteButton.backgroundColor = UIColor.white
         }else{
-        deleteButton.backgroundColor = UIColor.red
+            deleteButton.backgroundColor = UIColor.red
         }
         return [deleteButton]
     }
-    //func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-     //   if indexPath.section == 2{
-            
-     //   }
-        
-    //}
     //セルの削除機能の制限
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         switch indexPath.section {
@@ -194,25 +179,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         switch indexPath.section {
         case 0 :
-             selectedarea = areaCollection.areas[indexPath.row]
-             selectedareas.append(areaCollection.areas[indexPath.row])
-             print(selectedareas)
+            selectedarea = areaCollection.areas[indexPath.row]
+            selectedareas.append(areaCollection.areas[indexPath.row])
+            print(selectedareas)
             
         case 1 :
             selectedgenre = genreCollection.genres[indexPath.row]
             selectedgenres.append(genreCollection.genres[indexPath.row])
             print(selectedgenres)
             
-            //let genre = genreCollection.genres[indexPath.row]
+        //let genre = genreCollection.genres[indexPath.row]
         case 2 :
             Section2  = section2[indexPath.row]
             print(Section2!)
-            //let hasgone = section2[indexPath.row]
+        //let hasgone = section2[indexPath.row]
         default : break
         }
-
+        
     }
-    
     //同じセルが再度選択された時
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at:indexPath)
@@ -223,7 +207,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         case 0 :
             selectedarea = areaCollection.areas[indexPath.row]
             selectedareas = selectedareas.filter {$0 != selectedarea}
-           
+            
         case 1 :
             selectedgenre = genreCollection.genres[indexPath.row]
             selectedgenres = selectedgenres.filter {$0 != selectedgenre}
@@ -232,9 +216,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         //strArray.remove(at: strArray.index(of: "B")
     }
-
-    
-    
     //ーーーーーーーーーーーーーセクションーーーーーーーーーーーーーーー
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -272,7 +253,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //ーーーーーーーーートップ画面の検索条件追加ボタンを押した時ーーーーーーーーーーーーーーーー
     @IBAction func addSearchList(_ sender: UIButton) {
         
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture(_:)))
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(TopViewController.tapGesture(_:)))
         tapRecognizer.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapRecognizer)
         
@@ -286,28 +267,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         addAreaOrGerne = makeAddAreaOrGnere()
         searchListView.addSubview(addAreaOrGerne)
         
-        //searchWayDetail1 = makeSearchWayDetail(placeholder:"魚系、焼肉、etc..",x:90, y: 100)
-        //searchListView.addSubview(searchWayDetail1)
-        //searchWayDetail2 = makeSearchWayDetail(placeholder:"",x:90, y:140)
-        //searchListView.addSubview(searchWayDetail2)
-        //searchWayDetail3 = makeSearchWayDetail(placeholder:"",x:90, y:180)
-        //searchListView.addSubview(searchWayDetail3)
-        
-        
         let searchWayLabel = makeLabel(text: "追加するエリア", x:10, y: 15)
         searchListView.addSubview(searchWayLabel)
         
-        //let searchWayDetailLabel1 = makeLabel(text: "エリア",x:10, y: 100)
-        //searchListView.addSubview(searchWayDetailLabel1)
-        //let searchWayDetailLabel2 = makeLabel(text: "ジャンル",x:10, y: 140)
-        //searchListView.addSubview(searchWayDetailLabel2)
-        //let searchWayDetailLabel3 = makeLabel(text: "条件詳細3",x:10, y: 180)
-        //searchListView.addSubview(searchWayDetailLabel3)
-        
-        //let addsearchWayDetail = makeAddSearchWayDetailBtn(searchListView: searchListView)
-        //searchListView.addSubview(addsearchWayDetail)
-        //let addsearchWayDetailLabel = makeLabel(text: "詳細追加",x:125, y: 225)
-        //searchListView.addSubview(addsearchWayDetailLabel)
         //エリア追加ボタン
         let createBtn = makeAddAreaBtn(x:130, y:170)
         searchListView.addSubview(createBtn)
@@ -315,10 +277,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let cancelBtn = makeCancelBtn(searchListView: searchListView)
         searchListView.addSubview(cancelBtn)
     }
-    
-    
     @IBAction func addGenreButton(_ sender: UIButton) {
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGesture(_:)))
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(TopViewController.tapGesture(_:)))
         tapRecognizer.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapRecognizer)
         
@@ -342,8 +302,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         searchListView.addSubview(cancelBtn)
         
     }
-    
-    
     func makeBackView() -> UIView{
         backView = UIView()
         backView.frame = CGRect(x: 0, y: 0,  width: self.view.frame.width, height: self.view.frame.height)
@@ -371,7 +329,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         textField.placeholder = "エリア、シーン、etc..."
         return textField
     }
-
     func makeSearchWayDetail(placeholder: String, x: CGFloat ,y: CGFloat ) -> UITextField {
         let textField = UITextField()
         textField.frame = CGRect(x:x, y: y, width:180, height:40)
@@ -458,7 +415,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     //エリア追加ボタンの実装
     @objc func tappedAreaSubmitBtn(_ sender :AnyObject){
-    
+        
         if  addAreaOrGerne.text != nil{
             self.areaCollection.addAreaCollection(area: addAreaOrGerne.text!)
             print("エリア：\(addAreaOrGerne.text!)")
@@ -469,13 +426,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //ジャンル追加ボタンの実装
     @objc func tappedGenreSubmitBtn(_ sender: AnyObject){
         
-    if  addAreaOrGerne.text != nil {
-      self.genreCollection.addGenreCollection(genre: addAreaOrGerne.text!)
-      print("ジャンル：\(addAreaOrGerne.text!)")
-    }
-    self.searchWayTableView.reloadData()    
-    backView.removeFromSuperview()
-    
+        if  addAreaOrGerne.text != nil {
+            self.genreCollection.addGenreCollection(genre: addAreaOrGerne.text!)
+            print("ジャンル：\(addAreaOrGerne.text!)")
+        }
+        self.searchWayTableView.reloadData()
+        backView.removeFromSuperview()
+        
     }
     //ーーーーーーーーーーー詳細追加ボタンを押した後の画面ーーーーーーーーーーーーーーーーーー
     @objc func tappedAddBtn(_ sender: AnyObject){
@@ -498,10 +455,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         addView.addSubview(backBtn)
         let cancelBtn = makeCancelBtn(searchListView: searchListView)
         addView.addSubview(cancelBtn)
-        //let createBtn = makeCreateBtn(x:100, y:430)
-        //addView.addSubview(createBtn)
-        //let detail = addDetail.text!
-        //print("条件詳細:\(detail)")
     }
     
     //ーーーーーーーーーーーーーーーお店登録ページーーーーーーーーーーーーー
@@ -520,43 +473,43 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //self.shopCollection.fetchShops()
         
         if selectedareas.isEmpty {
-           shoplist = self.shopCollection.shops
+            shoplist = self.shopCollection.shops
         }else{
-        for selectarea in selectedareas{
-            for shoparea in self.shopCollection.shops {            
-                if shoparea.area == selectarea {
-                shoplist.append(shoparea)
+            for selectarea in selectedareas{
+                for shoparea in self.shopCollection.shops {
+                    if shoparea.area == selectarea {
+                        shoplist.append(shoparea)
+                    }
                 }
             }
         }
-        }
         //確認
         for test1 in shoplist{
-         print(test1.name)
+            print(test1.name)
         }
         print("areaのみで指定した検索結果↑")
         
         if selectedgenres.isEmpty {
             shoplist2 = shoplist
         }else{
-        for selectgenre in selectedgenres{
-            for shopgenre in  shoplist {
-                if shopgenre.genre == selectgenre {
-                    shoplist2.append(shopgenre)
+            for selectgenre in selectedgenres{
+                for shopgenre in  shoplist {
+                    if shopgenre.genre == selectgenre {
+                        shoplist2.append(shopgenre)
+                    }
                 }
             }
         }
-        }
         //確認
         for name in shoplist2{
-        print(name.name)
+            print(name.name)
         }
         print("areaとgenreで指定した検索結果↑")
         
         performSegue(withIdentifier: "toSearchResultSegue", sender: IndexPath.self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        
         if segue.identifier == "toSearchResultSegue" {
             let searchResultViewController = segue.destination as!SearchResultViewController
             searchResultViewController.searchShops = shoplist2
@@ -566,6 +519,4 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         
     }
-    
 }
-

@@ -62,29 +62,31 @@ class ShopRegistrationViewController: UIViewController, UITextFieldDelegate,UIPi
         shopCommentText.layer.borderWidth = 1
         shopCommentText.layer.cornerRadius = 5
         
-        //2つのpickerにはあらかじめ初期値を取得しておく。
-        
-        
-        
         //ShopPage2から「編集に戻る」を押した時は、内容を反映させておく
         shopNameText.text = shopname
         shopCommentText.text = shopcomment
         shopRateText.text = shoprate
-        //エリアとジャンルのpickerviewにも内容を反映させておく
+        //2つのpickerに初期値を設定。
+        //1.エリア
         self.areaCollection.fetchAreas()
-        //（基本的には、1番目の内容を反映させておく）
-        shoparea = areaCollection.areas[0]
+        if areaCollection.areas == []  {
+            print("エリアを入力")
+        }else{
+            shoparea = areaCollection.areas[0]  //基本的には、1番目のエリアを
+        }
         
         if let areaNum = areanum{
             shopAreaPicker.selectRow(areaNum, inComponent: 0, animated: true)
             shoparea = areaCollection.areas[areaNum]
         }
-        
-        
-        
+        //2.ジャンル
         self.genreCollection.fetchAreas()
-        shopgenre = genreCollection.genres[0]
-        
+        if genreCollection.genres == []  {
+            print("ジャンルを入力")
+        }else{
+            shopgenre = genreCollection.genres[0]
+        }
+                
         if let genreNum = genrenum{
             shopGenrePicker.selectRow(genreNum, inComponent: 0, animated: true)
             shopgenre = genreCollection.genres[genreNum]

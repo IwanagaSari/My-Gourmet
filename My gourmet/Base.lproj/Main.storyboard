@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8a6-1W-eca">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8a6-1W-eca">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--My gourmet-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="My_gourmet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TopViewController" customModule="My_gourmet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -411,7 +411,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3R-vh-7JC">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3R-vh-7JC">
                                                 <rect key="frame" x="0.0" y="512" width="373" height="160"/>
                                                 <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -470,6 +470,11 @@
                                                     <constraint firstAttribute="height" constant="70" id="NIF-GW-Avv"/>
                                                 </constraints>
                                             </pickerView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hws-ID-Uo8">
+                                                <rect key="frame" x="87" y="178" width="24" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="plusButton.png"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -628,7 +633,7 @@
                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="of9-5Y-DoW">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="of9-5Y-DoW">
                                 <rect key="frame" x="0.0" y="437" width="375" height="160"/>
                                 <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -713,7 +718,6 @@
                         <outlet property="shopGenre" destination="fd9-R5-5mB" id="MqY-ov-Ruq"/>
                         <outlet property="shopName" destination="yDY-oU-uwi" id="eco-FY-a6K"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toTopPageSegue" id="Gyt-FN-Tws"/>
-                        <segue destination="5vc-30-jrU" kind="show" id="yeh-zh-gfm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4zp-ex-zL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -824,13 +828,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jTn-ij-LXi">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jTn-ij-LXi">
                                 <rect key="frame" x="0.0" y="429" width="375" height="160"/>
                                 <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="Uye-5t-G3U"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfc-5b-7IR">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="openSafari:" destination="DbB-XE-3K7" eventType="touchUpInside" id="V5M-wJ-HTV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -872,23 +884,62 @@
                         <outlet property="shopGenre2" destination="Afz-AW-hhq" id="ssb-c6-zRl"/>
                         <outlet property="shopName2" destination="i6R-dx-wLJ" id="Dqf-Xr-Qug"/>
                         <segue destination="Z4w-u0-VgC" kind="show" identifier="shopEditSegue" id="MWU-Og-eAg"/>
-                        <segue destination="5vc-30-jrU" kind="show" id="s9c-mL-Otd"/>
+                        <segue destination="5vc-30-jrU" kind="show" identifier="toSafariSegue" id="s9c-mL-Otd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8T1-vT-o1E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2364" y="789"/>
         </scene>
-        <!--View Controller-->
+        <!--Open Safari-->
         <scene sceneID="hYv-Jv-0o9">
             <objects>
-                <viewController id="5vc-30-jrU" sceneMemberID="viewController">
+                <viewController id="5vc-30-jrU" customClass="OpenSafari" customModule="My_gourmet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9a4-l3-GgZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3f-TI-kUN">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5o6-tg-oEK"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rW-Fu-2z9">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4AK-Zd-Jou"/>
+                                </constraints>
+                            </view>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F86-YU-iow">
+                                <rect key="frame" x="0.0" y="108" width="375" height="515"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9rW-Fu-2z9" firstAttribute="top" secondItem="F86-YU-iow" secondAttribute="bottom" id="AQP-1v-OGJ"/>
+                            <constraint firstItem="cfJ-nP-Zji" firstAttribute="trailing" secondItem="9rW-Fu-2z9" secondAttribute="trailing" id="Gd9-dZ-qhe"/>
+                            <constraint firstItem="C3f-TI-kUN" firstAttribute="top" secondItem="cfJ-nP-Zji" secondAttribute="top" id="Oyp-O4-tQD"/>
+                            <constraint firstItem="9rW-Fu-2z9" firstAttribute="bottom" secondItem="cfJ-nP-Zji" secondAttribute="bottom" id="PZN-eh-o9S"/>
+                            <constraint firstItem="cfJ-nP-Zji" firstAttribute="trailing" secondItem="C3f-TI-kUN" secondAttribute="trailing" id="VjX-hS-wfO"/>
+                            <constraint firstItem="cfJ-nP-Zji" firstAttribute="trailing" secondItem="F86-YU-iow" secondAttribute="trailing" id="X7D-ye-Tqx"/>
+                            <constraint firstItem="F86-YU-iow" firstAttribute="top" secondItem="C3f-TI-kUN" secondAttribute="bottom" id="XQv-IZ-eDg"/>
+                            <constraint firstItem="C3f-TI-kUN" firstAttribute="leading" secondItem="cfJ-nP-Zji" secondAttribute="leading" id="dkZ-rf-0FY"/>
+                            <constraint firstItem="9rW-Fu-2z9" firstAttribute="leading" secondItem="cfJ-nP-Zji" secondAttribute="leading" id="pSx-pA-BWK"/>
+                            <constraint firstItem="F86-YU-iow" firstAttribute="leading" secondItem="cfJ-nP-Zji" secondAttribute="leading" id="wVO-Ju-vAS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cfJ-nP-Zji"/>
                     </view>
+                    <connections>
+                        <outlet property="safariView" destination="F86-YU-iow" id="szl-My-TLh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTz-J2-pAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -922,9 +973,8 @@
         <image name="plusButton.png" width="387" height="380"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s9c-mL-Otd"/>
         <segue reference="8S8-zb-3Zu"/>
-        <segue reference="MWU-Og-eAg"/>
+        <segue reference="m76-aq-v0t"/>
         <segue reference="NmC-69-xsv"/>
     </inferredMetricsTieBreakers>
 </document>
