@@ -31,7 +31,6 @@ class ShopPageViewController: UIViewController {
     var shoprate: String?
     var shophasgone: Int?
     var indexpath: Int?
-    
     var shopareanum : Int?
     
     override func viewDidLoad() {
@@ -60,9 +59,6 @@ class ShopPageViewController: UIViewController {
         
         let myURL = URL(string: "http://google.com")
         let myURLRequest = URLRequest(url: myURL!)
-
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,20 +66,6 @@ class ShopPageViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "編集へ戻る", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShopPageViewController.edit(sender:)))
     }
-    
-    
-    //@objc func close(sender: UIBarButtonItem) {
-    
-        //navigationController?.popToRootViewController(animated: true)
-        //shop.name = shopName.text!
-        //shop.area = shopArea.text!
-        //shop.genre = shopGenre.text!
-        //shop.comment = ShopComment.text!
-        //shop.rate = rate.text!
-        //shop.hasgone = ShopHasGone(rawValue: shopHasGone.selectedSegmentIndex)!
-        //self.shopCollection.addShopCollection(shop: shop)
-        //print(self.shopCollection.shops)
-    //}
     
     @objc func edit(sender: UIBarButtonItem) {
         //self.performSegue(withIdentifier: "shopRegistrationSegue", sender: nil)
@@ -98,11 +80,8 @@ class ShopPageViewController: UIViewController {
     }
     
     @IBAction func finalRegistration(_ sender: UIButton) {
-        //navigationController?.popToRootViewController(animated: true)
         shop.name = shopName.text!
         shop.area = shopArea.text!
-        //shopareanumを保存
-        //area.num = shopareanum
         
         shop.genre = shopGenre.text!
         shop.comment = ShopComment.text!
@@ -125,20 +104,5 @@ class ShopPageViewController: UIViewController {
             print(self.shopCollection.shops)
         }
         performSegue(withIdentifier: "toTopPageSegue", sender: IndexPath.self)
-        //navigationController?.popToRootViewController(animated: true)
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

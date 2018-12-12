@@ -39,6 +39,7 @@ class AddGenreViewController: UIViewController, UITextFieldDelegate {
     //入力欄
     addAreaOrGerne = makeAddAreaOrGnere()
     searchListView.addSubview(addAreaOrGerne)
+        
     //作成！ボタン
     let createBtn = makeAddGenreBtn(x:130, y:170)
     searchListView.addSubview(createBtn)
